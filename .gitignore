@@ -140,3 +140,9 @@ poetry.toml
 
 # LSP config files
 pyrightconfig.json
+
+# input files
+entradas/
+
+# output files
+saidas/
