@@ -58,9 +58,9 @@ def processar_arquivo(caminho: str) -> None:
     try:
         raiz, iteracoes = newton_raphson(f, derivada, x0, tolerancia, df_min, i_max, h)
 
-        Path("saidas").mkdir(parents=True, exist_ok=True)
+        Path("saidas/raizes").mkdir(parents=True, exist_ok=True)
 
-        with open("saidas/saida_newton_raphson.txt", "w", encoding="utf-8") as arquivo_saida:
+        with open("saidas/raizes/saida_newton_raphson.txt", "w", encoding="utf-8") as arquivo_saida:
             arquivo_saida.write(f"Raiz: {raiz:.10f}\n")
             arquivo_saida.write(f"Iterações: {iteracoes}\n")
 

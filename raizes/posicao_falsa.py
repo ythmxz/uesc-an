@@ -58,9 +58,9 @@ def processar_arquivo(caminho: str) -> None:
     try:
         raiz, erro_absoluto, iteracoes = posicao_falsa(f, a, b, tolerancia, d_min)
 
-        Path("saidas").mkdir(parents=True, exist_ok=True)
+        Path("saidas/raizes").mkdir(parents=True, exist_ok=True)
 
-        with open("saidas/saida_posicao_falsa.txt", "w", encoding="utf-8") as arquivo_saida:
+        with open("saidas/raizes/saida_posicao_falsa.txt", "w", encoding="utf-8") as arquivo_saida:
             arquivo_saida.write(f"Raiz: {raiz:.10f}\n")
             arquivo_saida.write(f"Erro Absoluto: {erro_absoluto:.10e}\n")
             arquivo_saida.write(f"Iterações: {iteracoes}\n")

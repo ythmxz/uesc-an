@@ -54,9 +54,9 @@ def processar_arquivo(caminho: str) -> None:
     try:
         raiz, erro_absoluto, iteracoes = bisseccao(f, a, b, tolerancia)
 
-        Path("saidas").mkdir(parents=True, exist_ok=True)
+        Path("saidas/raizes").mkdir(parents=True, exist_ok=True)
 
-        with open("saidas/saida_bisseccao.txt", "w", encoding="utf-8") as arquivo_saida:
+        with open("saidas/raizes/saida_bisseccao.txt", "w", encoding="utf-8") as arquivo_saida:
             arquivo_saida.write(f"Raiz: {raiz:.10f}\n")
             arquivo_saida.write(f"Erro Absoluto: {erro_absoluto:.10e}\n")
             arquivo_saida.write(f"Iterações: {iteracoes}\n")
