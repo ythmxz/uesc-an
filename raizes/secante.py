@@ -1,4 +1,5 @@
 from pathlib import Path
+from time import perf_counter
 from typing import Callable
 import numpy
 from sympy import symbols, sympify, lambdify
@@ -48,13 +49,16 @@ def processar_arquivo(caminho: str) -> None:
     f: Callable[[float], float] = gerar_funcao(expressao)
 
     try:
+        inicio: float = perf_counter()
         raiz, iteracoes = secante(f, x0, x1, tolerancia, d_min, i_max)
+        tempo_execucao: float = perf_counter() - inicio
 
         Path("saidas/raizes").mkdir(parents=True, exist_ok=True)
 
         with open("saidas/raizes/saida_secante.txt", "w", encoding="utf-8") as arquivo_saida:
             arquivo_saida.write(f"Raiz: {raiz:.10f}\n")
             arquivo_saida.write(f"Iterações: {iteracoes}\n")
+            arquivo_saida.write(f"Tempo de Execução (s): {tempo_execucao:.10f}\n")
 
     except ValueError as e:
         print(f"Erro: {e}")

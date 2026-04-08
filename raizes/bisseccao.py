@@ -1,4 +1,5 @@
 from pathlib import Path
+from time import perf_counter
 from typing import Callable
 import numpy
 from sympy import symbols, sympify, lambdify
@@ -52,7 +53,9 @@ def processar_arquivo(caminho: str) -> None:
     f: Callable[[float], float] = gerar_funcao(expressao)
 
     try:
+        inicio: float = perf_counter()
         raiz, erro_absoluto, iteracoes = bisseccao(f, a, b, tolerancia)
+        tempo_execucao: float = perf_counter() - inicio
 
         Path("saidas/raizes").mkdir(parents=True, exist_ok=True)
 
@@ -60,6 +63,7 @@ def processar_arquivo(caminho: str) -> None:
             arquivo_saida.write(f"Raiz: {raiz:.10f}\n")
             arquivo_saida.write(f"Erro Absoluto: {erro_absoluto:.10e}\n")
             arquivo_saida.write(f"Iterações: {iteracoes}\n")
+            arquivo_saida.write(f"Tempo de Execução (s): {tempo_execucao:.10f}\n")
 
     except ValueError as e:
         print(f"Erro: {e}")
