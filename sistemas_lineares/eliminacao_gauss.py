@@ -11,7 +11,7 @@ def eliminacao_de_gauss(
     a: list[list[float]] = [A[i] + [b[i]] for i in range(n)]
 
     for k in range(n):
-        linha_pivo: int = max(range(k, n), key=lambda i: abs(a[i][k]))
+        linha_pivo: int = max(range(k, n), key = lambda i: abs(a[i][k]))
 
         if a[linha_pivo][k] == 0.0:
             raise ValueError("Não possui pivô válido.")

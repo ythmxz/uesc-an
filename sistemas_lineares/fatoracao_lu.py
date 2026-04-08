@@ -16,7 +16,7 @@ def fatoracao_LU(
         L[i][i] = 1.0
 
     for k in range(n):
-        linha_pivo: int = max(range(k, n), key=lambda i: abs(U[i][k]))
+        linha_pivo: int = max(range(k, n), key = lambda i: abs(U[i][k]))
 
         if U[linha_pivo][k] == 0.0:
             raise ValueError("Não possui pivô válido.")
